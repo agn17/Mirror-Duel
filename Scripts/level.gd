@@ -9,10 +9,14 @@ const FAIL_HINTS := [
 @onready var player: Fighter = $Player
 @onready var enemy: Fighter = $MirrorEnemy
 @onready var exit_pad: Area2D = $ExitPad
-@onready var message: Label = $UI/Message
 @onready var hint: Label = $UI/Hint
 @onready var cam: Camera2D = $Camera2D
 @onready var plate_rect: ColorRect = $Plate/ColorRect
+@onready var dim: ColorRect = $UI/Dim
+@onready var win_box: VBoxContainer = $UI/Winbox
+@onready var win_title: Label = $UI/Winbox/Title
+@onready var win_stats: Label = $UI/Winbox/Stat
+@onready var win_prompt: Label = $UI/Winbox/Prompt
 
 var hold := 0.0
 var finished := false
@@ -20,7 +24,8 @@ var can_restart := false
 var attack_count := 0
 
 func _ready() -> void:
-	message.text = ""
+	dim.modulate.a = 0.0
+	win_box.visible = false
 	plate_rect.color = Color("8a7a1e")
 
 	player.frame_ready.connect(enemy.mirror_frame)
@@ -34,7 +39,7 @@ func _ready() -> void:
 	$Killzone.body_entered.connect(func(_b): _lose())
 
 	if Game.deaths == 0:
-		_show_hint("Move: A/D    Jump: Space    Bow: hold K    Attack: J", 6.0)
+		_show_hint("Move: A/D    Jump: Space/Up    Attack: J/X", 6.0)
 	else:
 		var i := mini(Game.deaths - 1, FAIL_HINTS.size() - 1)
 		_show_hint(FAIL_HINTS[i], 5.0)
@@ -42,7 +47,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if finished:
 		return
-	if exit_pad.overlaps_body(player) and player.bowing and enemy.bowing:
+	if exit_pad.overlaps_body(player): #and player.attacking and enemy.attacking:
 		hold += delta
 	else:
 		hold = 0.0
@@ -82,10 +87,33 @@ func _win() -> void:
 	finished = true
 	player.set_physics_process(false)
 	$Sfx/Win.play()
-	message.text = "Nobody got hurt.\nYou attacked %d times.\n\nPress any key" % attack_count
-	await get_tree().create_timer(1.0).timeout
-	can_restart = true
 
+	win_title.text = "Nobody got hurt."
+	if attack_count == 0:
+		win_stats.text = "A true pacifist."
+	else:
+		win_stats.text = "You attacked %d time%s." % [attack_count, "" if attack_count == 1 else "s"]
+
+	for l in [win_title, win_stats, win_prompt]:
+		l.modulate.a = 0.0
+	win_box.visible = true
+
+	# Title pops in from slightly smaller
+	win_title.pivot_offset = win_title.size / 2.0
+	win_title.scale = Vector2(0.8, 0.8)
+	create_tween().tween_property(win_title, "scale", Vector2.ONE, 0.6) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+	# Sequence: dim, title, stats, prompt
+	var t := create_tween()
+	t.tween_property(dim, "modulate:a", 0.6, 0.5)
+	t.tween_property(win_title, "modulate:a", 1.0, 0.6)
+	t.tween_interval(0.3)
+	t.tween_property(win_stats, "modulate:a", 1.0, 0.5)
+	t.tween_interval(0.6)
+	t.tween_property(win_prompt, "modulate:a", 1.0, 0.4)
+	await t.finished
+	can_restart = true
 func _lose() -> void:
 	if finished:
 		return
