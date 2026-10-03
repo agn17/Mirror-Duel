@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bf5jxq3xcaljw"]
+
+[ext_resource type="PackedScene" uid="uid://b71wva2p05w7g" path="res://Scenes/fighter.tscn" id="1_k457a"]
+[ext_resource type="Script" uid="uid://daow2ip5gvb0p" path="res://Scripts/mirror_enemy.gd" id="2_jyp51"]
+
+[node name="MirrorEnemy" unique_id=1092957045 instance=ExtResource("1_k457a")]
+script = ExtResource("2_jyp51")
+
+[node name="Body" parent="." index="0" unique_id=1273138203]
+modulate = Color(1, 0.49411765, 0.24705882, 1)

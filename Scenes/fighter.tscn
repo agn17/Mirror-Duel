@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b71wva2p05w7g"]
 
+[ext_resource type="Script" uid="uid://cglv5d7mfbtst" path="res://Scripts/fighter.gd" id="1_3dnt7"]
 [ext_resource type="Texture2D" uid="uid://c43ngrd016e5e" path="res://Assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_spritesheet(new).png" id="1_huaqb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dnt7"]
@@ -39,8 +40,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gnj45"]
-radius = 4.0
-height = 18.0
+radius = 9.0
+height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huaqb"]
 size = Vector2(28, 48)
@@ -49,13 +50,18 @@ size = Vector2(28, 48)
 size = Vector2(24, 24)
 
 [node name="Fighter" type="CharacterBody2D" unique_id=1092957045]
+collision_layer = 2
+script = ExtResource("1_3dnt7")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=1273138203]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w5glg")
 frame = 3
 frame_progress = 0.31353447
+offset = Vector2(0, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1736040572]
+position = Vector2(0, -22)
 shape = SubResource("CapsuleShape2D_gnj45")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=261027073]
@@ -63,16 +69,16 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=548724122]
-position = Vector2(0, -24)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_huaqb")
 debug_color = Color(0.59684056, 0.5406826, 0.20103219, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1767957374]
+position = Vector2(40, -22)
 collision_layer = 8
 collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1771546542]
-position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_3dnt7")
 debug_color = Color(0.8245359, 0.38539654, 0.2860556, 0.41960785)

@@ -1,3 +1,29 @@
 [gd_scene format=3 uid="uid://bayi7kuqwjg0v"]
 
+[ext_resource type="Script" uid="uid://dixvmt2f2no78" path="res://Scripts/test_level.gd" id="1_dtjkg"]
+[ext_resource type="PackedScene" uid="uid://ehs7wn8v0tns" path="res://Scenes/Player.tscn" id="1_iti4p"]
+[ext_resource type="PackedScene" uid="uid://bf5jxq3xcaljw" path="res://Scenes/MirrorEnemy.tscn" id="3_eglq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4t0r"]
+size = Vector2(1157, 40)
+
 [node name="Test_Level" type="Node2D" unique_id=1635438978]
+script = ExtResource("1_dtjkg")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1069710642]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1696008399]
+position = Vector2(576, 520)
+shape = SubResource("RectangleShape2D_c4t0r")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=8504833]
+offset_top = 500.0
+offset_right = 1152.0
+offset_bottom = 540.0
+
+[node name="Player" parent="." unique_id=1092957045 instance=ExtResource("1_iti4p")]
+position = Vector2(250, 500)
+
+[node name="MirrorEnemy" parent="." unique_id=1404337350 instance=ExtResource("3_eglq2")]
+position = Vector2(900, 500)

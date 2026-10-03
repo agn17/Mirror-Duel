@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cg3ygjsjfhjgc"]
+
+[ext_resource type="Script" uid="uid://biie3t3gga5q3" path="res://Scripts/plate.gd" id="1_6phgx"]
+[ext_resource type="Script" uid="uid://esejd3oqpgba" path="res://Scripts/bridge.gd" id="1_81xng"]
+[ext_resource type="PackedScene" uid="uid://ehs7wn8v0tns" path="res://Scenes/Player.tscn" id="1_k5f4k"]
+[ext_resource type="Script" uid="uid://x3pvdawbg6dr" path="res://Scripts/level.gd" id="1_wqkje"]
+[ext_resource type="PackedScene" uid="uid://bf5jxq3xcaljw" path="res://Scenes/MirrorEnemy.tscn" id="2_6phgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51e2h"]
+size = Vector2(440, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
+size = Vector2(512, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5f4k"]
+size = Vector2(20, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+size = Vector2(200, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqkje"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f350"]
+size = Vector2(1552, 60)
+
+[node name="Level" type="Node2D" unique_id=1198996697]
+script = ExtResource("1_wqkje")
+
+[node name="Groundleft" type="StaticBody2D" parent="." unique_id=231598618]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Groundleft" unique_id=1863988141]
+position = Vector2(220, 557)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="ColorRect" type="ColorRect" parent="Groundleft" unique_id=985825797]
+offset_top = 500.0
+offset_right = 440.0
+offset_bottom = 618.0
+
+[node name="Groundright" type="StaticBody2D" parent="." unique_id=957761457]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Groundright" unique_id=1928865783]
+position = Vector2(896, 574)
+shape = SubResource("RectangleShape2D_tumq0")
+
+[node name="ColorRect" type="ColorRect" parent="Groundright" unique_id=756231547]
+offset_left = 640.0
+offset_top = 500.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1232192828]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=632845251]
+position = Vector2(700, 452)
+shape = SubResource("RectangleShape2D_k5f4k")
+
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1464611136]
+offset_left = 690.0
+offset_top = 404.0
+offset_right = 710.0
+offset_bottom = 500.0
+color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+
+[node name="Bridge" type="StaticBody2D" parent="." unique_id=512362494]
+collision_mask = 0
+script = ExtResource("1_81xng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge" unique_id=533631991]
+position = Vector2(540, 505)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="ColorRect" type="ColorRect" parent="Bridge" unique_id=1229063396]
+offset_left = 440.0
+offset_top = 500.0
+offset_right = 640.0
+offset_bottom = 510.0
+
+[node name="Plate" type="Area2D" parent="." unique_id=961388427]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6phgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate" unique_id=733415656]
+position = Vector2(734, 496)
+shape = SubResource("RectangleShape2D_81xng")
+
+[node name="ColorRect" type="ColorRect" parent="Plate" unique_id=1576500537]
+offset_left = 710.0
+offset_top = 492.0
+offset_right = 750.0
+offset_bottom = 500.0
+
+[node name="ExitPad" type="Area2D" parent="." unique_id=1890733618]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitPad" unique_id=403194072]
+position = Vector2(665, 490)
+shape = SubResource("RectangleShape2D_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="ExitPad" unique_id=453628500]
+offset_left = 645.0
+offset_top = 480.0
+offset_right = 685.0
+offset_bottom = 500.0
+color = Color(1, 1, 0.19607843, 1)
+
+[node name="Killzone" type="Area2D" parent="." unique_id=341545616]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1145497473]
+position = Vector2(576, 730)
+shape = SubResource("RectangleShape2D_0f350")
+
+[node name="Player" parent="." unique_id=1092957045 instance=ExtResource("1_k5f4k")]
+position = Vector2(250, 500)
+
+[node name="MirrorEnemy" parent="." unique_id=194339338 instance=ExtResource("2_6phgx")]
+position = Vector2(900, 500)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=481550289]
+
+[node name="Message" type="Label" parent="UI" unique_id=1471647646]
+offset_left = 573.0
+offset_top = 290.0
+offset_right = 613.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
