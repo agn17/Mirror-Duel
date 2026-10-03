@@ -1,23 +1,43 @@
 extends Node2D
 
+const FAIL_HINTS := [
+	"It only does what you do...",
+	"It walks the opposite way. Where could that take it?",
+	"Something on its side might help you.",
+]
+
 @onready var player: Fighter = $Player
 @onready var enemy: Fighter = $MirrorEnemy
 @onready var exit_pad: Area2D = $ExitPad
 @onready var message: Label = $UI/Message
+@onready var hint: Label = $UI/Hint
+@onready var cam: Camera2D = $Camera2D
+@onready var plate_rect: ColorRect = $Plate/ColorRect
 
 var hold := 0.0
 var finished := false
+var can_restart := false
 var attack_count := 0
 
 func _ready() -> void:
+	message.text = ""
+	plate_rect.color = Color("8a7a1e")
+
 	player.frame_ready.connect(enemy.mirror_frame)
-	player.attacked.connect(func(): attack_count += 1)
-	$Plate.toggled.connect($Bridge.set_extended)
+	player.attacked.connect(_on_player_attacked)
+	player.jumped.connect($Sfx/Jump.play)
+	$Plate.toggled.connect(_on_plate_toggled)
 
 	# Pacifist rule: any damage to either fighter = fail
-	player.damaged.connect(func(_h): _lose())
-	enemy.damaged.connect(func(_h): _lose())
+	player.damaged.connect(_on_damaged)
+	enemy.damaged.connect(_on_damaged)
 	$Killzone.body_entered.connect(func(_b): _lose())
+
+	if Game.deaths == 0:
+		_show_hint("Move: A/D    Jump: Space    Bow: hold K    Attack: J", 6.0)
+	else:
+		var i := mini(Game.deaths - 1, FAIL_HINTS.size() - 1)
+		_show_hint(FAIL_HINTS[i], 5.0)
 
 func _physics_process(delta: float) -> void:
 	if finished:
@@ -29,13 +49,54 @@ func _physics_process(delta: float) -> void:
 	if hold >= 1.5:
 		_win()
 
+func _on_player_attacked() -> void:
+	attack_count += 1
+	$Sfx/Attack.play()
+
+func _on_plate_toggled(active: bool) -> void:
+	plate_rect.color = Color("ffe94d") if active else Color("8a7a1e")
+	$Bridge.set_extended(active)
+	$Sfx/Plate.play()
+
+func _on_damaged(_health: int) -> void:
+	$Sfx/Hit.play()
+	player.get_node("Body").modulate = Color.RED
+	enemy.get_node("Body").modulate = Color.RED
+	_lose()
+
+func _show_hint(text: String, seconds: float) -> void:
+	hint.text = text
+	hint.modulate.a = 1.0
+	var t := create_tween()
+	t.tween_interval(seconds)
+	t.tween_property(hint, "modulate:a", 0.0, 1.0)
+
+func _shake(strength := 8.0) -> void:
+	var t := create_tween()
+	for i in 6:
+		t.tween_property(cam, "offset",
+			Vector2(randf_range(-1, 1), randf_range(-1, 1)) * strength, 0.04)
+	t.tween_property(cam, "offset", Vector2.ZERO, 0.04)
+
 func _win() -> void:
 	finished = true
 	player.set_physics_process(false)
-	message.text = "Nobody got hurt.\nYou attacked %d times." % attack_count
+	$Sfx/Win.play()
+	message.text = "Nobody got hurt.\nYou attacked %d times.\n\nPress any key" % attack_count
+	await get_tree().create_timer(1.0).timeout
+	can_restart = true
 
 func _lose() -> void:
 	if finished:
 		return
 	finished = true
-	get_tree().reload_current_scene.call_deferred()
+	Game.deaths += 1
+	player.set_physics_process(false)   # freezes the mirror too
+	_shake()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if can_restart and event is InputEventKey and event.pressed and not event.echo:
+		Game.deaths = 0
+		get_tree().change_scene_to_file("res://Scenes/title.tscn")

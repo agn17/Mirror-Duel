@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Mirror Duel"
-run/main_scene="uid://bayi7kuqwjg0v"
+run/main_scene="uid://buk88j4ldpad8"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*uid://2q885a3mkksn"
 
 [display]
 

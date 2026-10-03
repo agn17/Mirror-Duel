@@ -4,7 +4,9 @@ extends CharacterBody2D
 signal attacked
 signal damaged(health: int)
 signal died
+signal jumped
 
+@onready var sprite: AnimatedSprite2D = $Body
 @export var speed := 200.0
 @export var jump_velocity := -380.0
 @export var gravity := 1100.0
@@ -26,6 +28,11 @@ func _ready() -> void:
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 
 func apply_frame(f: Dictionary, delta: float) -> void:
+	if jump_buffer > 0.0 and coyote > 0.0 and not bowing:
+		velocity.y = jump_velocity
+		coyote = 0.0
+		jump_buffer = 0.0
+		jumped.emit()
 	attack_cooldown = max(0.0, attack_cooldown - delta)
 	invuln = max(0.0, invuln - delta)
 	bowing = f.bow and is_on_floor()

@@ -87,6 +87,7 @@ offset_bottom = 510.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_6phgx")
+linger = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate" unique_id=733415656]
 position = Vector2(734, 496)
@@ -130,10 +131,35 @@ position = Vector2(900, 500)
 [node name="UI" type="CanvasLayer" parent="." unique_id=481550289]
 
 [node name="Message" type="Label" parent="UI" unique_id=1471647646]
-offset_left = 573.0
-offset_top = 290.0
-offset_right = 613.0
-offset_bottom = 357.0
+offset_left = 540.0
+offset_top = 229.0
+offset_right = 580.0
+offset_bottom = 296.0
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Hint" type="Label" parent="UI" unique_id=526275167]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1274568679]
+anchor_mode = 0
+
+[node name="Sfx" type="Node" parent="." unique_id=461407547]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sfx" unique_id=1432473016]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Sfx" unique_id=1066761190]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sfx" unique_id=1168080525]
+
+[node name="Plate" type="AudioStreamPlayer2D" parent="Sfx" unique_id=266323010]
+
+[node name="Win" type="AudioStreamPlayer2D" parent="Sfx" unique_id=4897425]
