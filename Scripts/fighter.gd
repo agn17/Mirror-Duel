@@ -8,9 +8,10 @@ signal jumped
 
 @onready var sprite: AnimatedSprite2D = $Body
 @export var speed := 200.0
-@export var jump_velocity := -380.0
+@export var jump_velocity := -330.0
 @export var gravity := 1100.0
 @export var max_health := 3
+@export var push_speed := 80.0
 
 var step_timer := 0.0
 @onready var step_sound: AudioStreamPlayer2D = $StepSound
@@ -49,13 +50,21 @@ func apply_frame(f: Dictionary, delta: float) -> void:
 	if f.x != 0.0:
 		facing = Vector2(sign(f.x), 0)
 	move_and_slide()
-
+	_push_boxes()
 	if f.attack and attack_cooldown == 0.0:
 		_do_attack()
 		_do_attack()
 	_update_animation()
 	_update_steps(delta)
+	move_and_slide()
 	
+func _push_boxes() -> void:
+	for i in get_slide_collision_count():
+		var c := get_slide_collision(i)
+		var box := c.get_collider()
+		if box is PushBox and abs(c.get_normal().x) > 0.9:
+			box.push(sign(-c.get_normal().x) * push_speed)
+
 func _update_animation() -> void:
 	if attacking:
 		_play("attack")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cw0w7x7w2qf18"]
+
+[ext_resource type="Texture2D" uid="uid://dy6ovpum6gqca" path="res://Assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/box.png" id="1_ego7h"]
+[ext_resource type="Script" uid="uid://dwi8j5sushfq4" path="res://Scripts/move_component.gd" id="2_2jyye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4t0r"]
+size = Vector2(32, 30)
+
+[node name="box" type="CharacterBody2D" unique_id=1636024568]
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=755994072]
+shape = SubResource("RectangleShape2D_c4t0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1373884265]
+texture = ExtResource("1_ego7h")
+
+[node name="MoveComponent" type="Node" parent="." unique_id=1532216626]
+script = ExtResource("2_2jyye")
+
+[node name="rightcollision" type="RayCast2D" parent="." unique_id=1359764928]
+target_position = Vector2(18, 0)
+collision_mask = 2
+
+[node name="leftcollision" type="RayCast2D" parent="." unique_id=1995996242]
+target_position = Vector2(-18, 0)
+collision_mask = 2

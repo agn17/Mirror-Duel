@@ -7,7 +7,7 @@ const FAIL_HINTS := [
 ]
 
 @onready var player: Fighter = $Player
-@onready var enemy: Fighter = $MirrorEnemy
+#@onready var enemy: Fighter = $MirrorEnemy
 @onready var exit_pad: Area2D = $ExitPad
 @onready var hint: Label = $UI/Hint
 @onready var cam: Camera2D = $Camera2D
@@ -17,7 +17,7 @@ const FAIL_HINTS := [
 @onready var win_title: Label = $UI/Winbox/Title
 @onready var win_stats: Label = $UI/Winbox/Stat
 @onready var win_prompt: Label = $UI/Winbox/Prompt
-@onready var sprite_2d: Sprite2D = $Plate/Sprite2D
+#@onready var sprite_2d: Sprite2D = $Plate/Sprite2D
 
 var hold := 0.0
 var finished := false
@@ -29,14 +29,14 @@ func _ready() -> void:
 	win_box.visible = false
 	#sprite_2d.Color = Color("8a7a1e")
 
-	player.frame_ready.connect(enemy.mirror_frame)
+#	player.frame_ready.connect(enemy.mirror_frame)
 	player.attacked.connect(_on_player_attacked)
 	player.jumped.connect($Sfx/Jump.play)
-	$Plate.toggled.connect(_on_plate_toggled)
+#	$Plate.toggled.connect(_on_plate_toggled)
 
 	# Pacifist rule: any damage to either fighter = fail
 	player.damaged.connect(_on_damaged)
-	enemy.damaged.connect(_on_damaged)
+#	enemy.damaged.connect(_on_damaged)
 	$Killzone.body_entered.connect(func(_b): _lose())
 
 	if Game.deaths == 0:
@@ -67,7 +67,7 @@ func _on_plate_toggled(active: bool) -> void:
 func _on_damaged(_health: int) -> void:
 	$Sfx/Hit.play()
 	player.get_node("Body").modulate = Color.RED
-	enemy.get_node("Body").modulate = Color.RED
+#	enemy.get_node("Body").modulate = Color.RED
 	_lose()
 
 func _show_hint(text: String, seconds: float) -> void:
@@ -128,4 +128,4 @@ func _lose() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if can_restart and event is InputEventKey and event.pressed and not event.echo:
 		Game.deaths = 0
-		get_tree().change_scene_to_file("res://Scenes/level2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/level1.tscn")

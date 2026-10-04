@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://caq7boagnrrb1"]
+
+[ext_resource type="Script" uid="uid://cf78b4q6ksfmt" path="res://Scripts/push_box.gd" id="1_g1quh"]
+[ext_resource type="Texture2D" uid="uid://dy6ovpum6gqca" path="res://Assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/box.png" id="1_tctmx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4t0r"]
+size = Vector2(34, 30)
+
+[node name="PushBox" type="CharacterBody2D" unique_id=1766103779]
+script = ExtResource("1_g1quh")
+friction = 1500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2088250518]
+position = Vector2(0, -1)
+texture = ExtResource("1_tctmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1104866425]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_c4t0r")

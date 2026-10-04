@@ -128,4 +128,4 @@ func _lose() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if can_restart and event is InputEventKey and event.pressed and not event.echo:
 		Game.deaths = 0
-		get_tree().change_scene_to_file("res://Scenes/level2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/title.tscn")

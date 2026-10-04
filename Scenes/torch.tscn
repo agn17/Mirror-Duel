@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://blnr25u0buyyc"]
+
+[ext_resource type="Texture2D" uid="uid://cna2xqsw2kn8u" path="res://Assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/tiki_torch_props_strip_12.png" id="1_wced7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrk4u"]
+size = Vector2(6, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1t0l"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beu3c"]
+atlas = ExtResource("1_wced7")
+region = Rect2(8, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spjw2"]
+atlas = ExtResource("1_wced7")
+region = Rect2(16, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg6dd"]
+atlas = ExtResource("1_wced7")
+region = Rect2(24, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ufd5"]
+atlas = ExtResource("1_wced7")
+region = Rect2(32, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05x6m"]
+atlas = ExtResource("1_wced7")
+region = Rect2(40, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d43v6"]
+atlas = ExtResource("1_wced7")
+region = Rect2(48, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e64sw"]
+atlas = ExtResource("1_wced7")
+region = Rect2(56, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1y4a"]
+atlas = ExtResource("1_wced7")
+region = Rect2(64, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjdc7"]
+atlas = ExtResource("1_wced7")
+region = Rect2(72, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs836"]
+atlas = ExtResource("1_wced7")
+region = Rect2(80, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li82y"]
+atlas = ExtResource("1_wced7")
+region = Rect2(88, 0, 8, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4t0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1t0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beu3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spjw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg6dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ufd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05x6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d43v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e64sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1y4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjdc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs836")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li82y")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Torch" type="Area2D" unique_id=2047546822]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589882138]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_wrk4u")
+one_way_collision = true
+one_way_collision_direction = Vector2(0.99996525, 0.008333044)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1521494625]
+sprite_frames = SubResource("SpriteFrames_c4t0r")
+autoplay = "default"
+frame_progress = 0.0150171155

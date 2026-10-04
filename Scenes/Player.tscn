@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bbullfqt8hm82" path="res://Scripts/player.gd" id="2_kyqiw"]
 
 [node name="Player" unique_id=1092957045 instance=ExtResource("1_rpqav")]
+z_index = 5
 script = ExtResource("2_kyqiw")
 
 [node name="Body" parent="." index="0" unique_id=1273138203]

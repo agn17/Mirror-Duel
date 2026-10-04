@@ -192,4 +192,5 @@ shape = SubResource("RectangleShape2D_3dnt7")
 debug_color = Color(0.8245359, 0.38539654, 0.2860556, 0.41960785)
 
 [node name="StepSound" type="AudioStreamPlayer2D" parent="." unique_id=115790794]
+z_index = 5
 stream = ExtResource("4_6p8wg")

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://duvjxw1yuoydw"]
+
+[ext_resource type="Texture2D" uid="uid://c3belmievjwvq" path="res://Assets/platformer_metroidvania asset pack v1.01/fauna sprites/rabit_walk_anim_strip_6.png" id="1_146lt"]
+[ext_resource type="Script" uid="uid://0nis7iq0gbrp" path="res://Scripts/bird.gd" id="1_yxsoj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxsoj"]
+atlas = ExtResource("1_146lt")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvytb"]
+atlas = ExtResource("1_146lt")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiawo"]
+atlas = ExtResource("1_146lt")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa2gj"]
+atlas = ExtResource("1_146lt")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sksps"]
+atlas = ExtResource("1_146lt")
+region = Rect2(64, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hplpq"]
+atlas = ExtResource("1_146lt")
+region = Rect2(80, 0, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4t0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxsoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiawo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa2gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sksps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hplpq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4t0r"]
+size = Vector2(11, 8)
+
+[node name="rabbit" type="Node2D" unique_id=103867019]
+script = ExtResource("1_yxsoj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=409392054]
+sprite_frames = SubResource("SpriteFrames_c4t0r")
+autoplay = "default"
+frame = 2
+frame_progress = 0.7983974
+
+[node name="RayCastright" type="RayCast2D" parent="." unique_id=1217756722]
+target_position = Vector2(23, 0)
+
+[node name="RayCastleft" type="RayCast2D" parent="." unique_id=256413633]
+target_position = Vector2(-24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=230477060]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_c4t0r")
