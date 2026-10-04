@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dmvw2ld185wl3" path="res://Sounds/universfield-game-bonus-02-294436.mp3" id="10_crh0w"]
 [ext_resource type="FontFile" uid="uid://dao7v2lwrl6ld" path="res://Assets/fonts/PixelOperator8.ttf" id="10_mauxt"]
 [ext_resource type="PackedScene" uid="uid://blnr25u0buyyc" path="res://Scenes/torch.tscn" id="12_svu7w"]
+[ext_resource type="AudioStream" uid="uid://bv5fsouox0ddf" path="res://Sounds/freesound_community-gamemusic-6082.mp3" id="17_ms07d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ha31o"]
 texture = ExtResource("4_qxfql")
@@ -632,18 +633,24 @@ position = Vector2(0, -3.0517578e-05)
 anchor_mode = 0
 zoom = Vector2(1.1, 1.1)
 
-[node name="Torch" parent="." unique_id=2047546822 instance=ExtResource("12_svu7w")]
+[node name="Props" type="Node" parent="." unique_id=1741001105]
+
+[node name="Torch" parent="Props" unique_id=2047546822 instance=ExtResource("12_svu7w")]
 position = Vector2(782, 494)
 scale = Vector2(1.5, 1.5)
 
-[node name="Torch2" parent="." unique_id=2015224232 instance=ExtResource("12_svu7w")]
+[node name="Torch2" parent="Props" unique_id=2015224232 instance=ExtResource("12_svu7w")]
 position = Vector2(549, 494)
 scale = Vector2(1.5, 1.5)
 
-[node name="Torch3" parent="." unique_id=1490335031 instance=ExtResource("12_svu7w")]
+[node name="Torch3" parent="Props" unique_id=1490335031 instance=ExtResource("12_svu7w")]
 position = Vector2(629, 494)
 scale = Vector2(1.5, 1.5)
 
-[node name="Torch4" parent="." unique_id=1929164622 instance=ExtResource("12_svu7w")]
+[node name="Torch4" parent="Props" unique_id=1929164622 instance=ExtResource("12_svu7w")]
 position = Vector2(687, 493)
 scale = Vector2(1.5, 1.5)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=289634612]
+position = Vector2(25, -1)
+stream = ExtResource("17_ms07d")

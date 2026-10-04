@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djo4jj2v7n2pk"]
 
-[ext_resource type="Script" uid="uid://x3pvdawbg6dr" path="res://Scripts/level.gd" id="1_5qi50"]
+[ext_resource type="Script" uid="uid://b1lgxkc55qcey" path="res://Scripts/level2.gd" id="1_tp0ft"]
 [ext_resource type="Texture2D" uid="uid://dtfpoaajkktrj" path="res://Assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset_32x32(new).png" id="2_1apgh"]
 [ext_resource type="Texture2D" uid="uid://dw206osecetwr" path="res://Assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/mirr.png" id="3_ue4po"]
 [ext_resource type="Texture2D" uid="uid://dmyndvoinug12" path="res://Assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/fg_0.png" id="4_ue4po"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://duvjxw1yuoydw" path="res://Scenes/rabbit.tscn" id="22_18ouw"]
 [ext_resource type="PackedScene" uid="uid://caq7boagnrrb1" path="res://Scenes/push_box.tscn" id="26_4jqg0"]
 [ext_resource type="PackedScene" uid="uid://cw0w7x7w2qf18" path="res://Scenes/box.tscn" id="27_7k4fu"]
+[ext_resource type="AudioStream" uid="uid://bv5fsouox0ddf" path="res://Sounds/freesound_community-gamemusic-6082.mp3" id="29_yjaoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ha31o"]
 texture = ExtResource("2_1apgh")
@@ -583,7 +584,7 @@ size = Vector2(1552, 60)
 size = Vector2(28, 30)
 
 [node name="Level" type="Node2D" unique_id=1198996697]
-script = ExtResource("1_5qi50")
+script = ExtResource("1_tp0ft")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1736898624]
 position = Vector2(25, -1)
@@ -812,3 +813,6 @@ position = Vector2(13, 339)
 
 [node name="box2" parent="." unique_id=1351282539 instance=ExtResource("27_7k4fu")]
 position = Vector2(13, 315)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=635805911]
+stream = ExtResource("29_yjaoa")

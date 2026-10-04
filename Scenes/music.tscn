@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg7a0a82a43eo"]
+
+[ext_resource type="AudioStream" uid="uid://bv5fsouox0ddf" path="res://Sounds/freesound_community-gamemusic-6082.mp3" id="1_fbmny"]
+
+[node name="Music" type="AudioStreamPlayer2D" unique_id=1020642097]
+stream = ExtResource("1_fbmny")

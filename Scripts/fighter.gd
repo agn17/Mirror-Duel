@@ -7,8 +7,8 @@ signal died
 signal jumped
 
 @onready var sprite: AnimatedSprite2D = $Body
-@export var speed := 200.0
-@export var jump_velocity := -330.0
+@export var speed := 150.0
+@export var jump_velocity := -240.0
 @export var gravity := 1100.0
 @export var max_health := 3
 @export var push_speed := 80.0
