@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://buk88j4ldpad8"]
 
 [ext_resource type="Script" uid="uid://dnu8l3ssaddv1" path="res://Scripts/title.gd" id="1_w31pl"]
+[ext_resource type="FontFile" uid="uid://dao7v2lwrl6ld" path="res://Assets/fonts/PixelOperator8.ttf" id="2_ekrfg"]
 
 [node name="Title" type="Control" unique_id=824777340]
 layout_mode = 3
@@ -21,10 +22,11 @@ color = Color(0.105882354, 0.105882354, 0.18431373, 0.84313726)
 
 [node name="Name" type="Label" parent="." unique_id=537536050]
 layout_mode = 0
-offset_left = 452.0
-offset_top = 23.0
-offset_right = 855.0
-offset_bottom = 122.0
+offset_left = 328.0
+offset_top = 32.0
+offset_right = 976.0
+offset_bottom = 131.0
+theme_override_fonts/font = ExtResource("2_ekrfg")
 theme_override_font_sizes/font_size = 72
 text = "Mirror Duel"
 horizontal_alignment = 1
@@ -32,10 +34,11 @@ vertical_alignment = 1
 
 [node name="Sub" type="Label" parent="." unique_id=574262665]
 layout_mode = 0
-offset_left = 404.0
-offset_top = 122.0
-offset_right = 919.0
-offset_bottom = 210.0
+offset_left = 296.0
+offset_top = 168.0
+offset_right = 992.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("2_ekrfg")
 theme_override_font_sizes/font_size = 48
 text = "Peace is a Puzzle.."
 horizontal_alignment = 1
@@ -43,11 +46,12 @@ vertical_alignment = 1
 
 [node name="Prompt" type="Label" parent="." unique_id=1231743830]
 layout_mode = 0
-offset_left = 556.0
-offset_top = 382.0
-offset_right = 744.0
-offset_bottom = 421.0
-theme_override_font_sizes/font_size = 28
+offset_left = 480.0
+offset_top = 328.0
+offset_right = 820.0
+offset_bottom = 386.0
+theme_override_fonts/font = ExtResource("2_ekrfg")
+theme_override_font_sizes/font_size = 32
 text = "Press Any Key"
 horizontal_alignment = 1
 vertical_alignment = 1

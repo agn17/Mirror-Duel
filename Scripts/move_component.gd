@@ -20,7 +20,7 @@ func _apply_gravity(delta:float)-> void:
 func _push_movement()-> void:
 	var direction = Input.get_axis("move_left","move_right")
 	if direction == _get_collision_normal() and direction:
-		parent.velocity.x = speed*-direction
+		parent.velocity.x = speed*direction
 	else:
 		parent.velocity.x=0.0
 

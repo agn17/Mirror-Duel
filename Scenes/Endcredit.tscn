@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://lwoid321kies"]
+
+[ext_resource type="Script" uid="uid://cgt141cggwbuv" path="res://Scripts/Endcred.gd" id="1_iidfp"]
+[ext_resource type="FontFile" uid="uid://c8sg3xgdc1ykl" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_up2ag"]
+
+[node name="Control" type="Control" unique_id=219084370]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iidfp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=835007503]
+layout_mode = 1
+offset_right = 1278.0
+offset_bottom = 716.0
+color = Color(0.19607843, 0.17254902, 0.23137255, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1475112542]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 177.0
+offset_right = 886.0
+offset_bottom = 241.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 60
+text = "Credits:"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="." unique_id=1516047431]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 40.0
+offset_right = 1186.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 64
+text = "Thanks for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=620565739]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 282.0
+offset_right = 1143.0
+offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 24
+text = "Player Asset and Tileset: PLATFORMER/METROIDVANIA 
+ASSET PACK By O_Lobster"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=716754532]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 364.0
+offset_right = 1168.0
+offset_bottom = 428.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 24
+text = "Font Styles : Brackey's platformer assets by Brackey"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=870173148]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 428.0
+offset_right = 1168.0
+offset_bottom = 492.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 24
+text = "SFX & Music: From Pixabay by Universfield, Milanwulf,
+Brackey, Lumora Studios & Freesound Community."
+vertical_alignment = 1
+
+[node name="Prompt" type="Label" parent="." unique_id=1665375431]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 554.0
+offset_right = 1184.0
+offset_bottom = 618.0
+theme_override_fonts/font = ExtResource("1_up2ag")
+theme_override_font_sizes/font_size = 24
+text = "Press Space to Continue."
+horizontal_alignment = 1
+vertical_alignment = 1
