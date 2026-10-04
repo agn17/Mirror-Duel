@@ -654,3 +654,4 @@ scale = Vector2(1.5, 1.5)
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=289634612]
 position = Vector2(25, -1)
 stream = ExtResource("17_ms07d")
+autoplay = true

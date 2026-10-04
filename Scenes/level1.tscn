@@ -756,3 +756,4 @@ one_way_collision = true
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=719328791]
 stream = ExtResource("25_h54da")
+autoplay = true

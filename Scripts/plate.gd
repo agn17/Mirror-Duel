@@ -3,7 +3,9 @@ extends Area2D
 
 signal toggled(active: bool)
 
-@export var linger := 0.6
+@export var linger := 1.2
+@export var latch := false
+@export var required_group := "mirror"
 
 var occupants := 0
 var timer := 0.0
@@ -22,6 +24,8 @@ func _on_body_exited(body: Node) -> void:
 		occupants -= 1
 
 func _physics_process(delta: float) -> void:
+	if latch and active:
+		return
 	timer = linger if occupants > 0 else max(0.0, timer - delta)
 	var now := timer > 0.0
 	if now != active:

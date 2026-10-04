@@ -18,6 +18,8 @@ const FAIL_HINTS := [
 @onready var win_stats: Label = $UI/Winbox/Stat
 @onready var win_prompt: Label = $UI/Winbox/Prompt
 @onready var sprite_2d: Sprite2D = $Plate/Sprite2D
+#@onready var trigger: Area2D = $trigger
+#@onready var plat: StaticBody2D = $Platform
 
 var hold := 0.0
 var finished := false
@@ -28,7 +30,8 @@ func _ready() -> void:
 	dim.modulate.a = 0.0
 	win_box.visible = false
 	#sprite_2d.Color = Color("8a7a1e")
-
+#	$Plate.toggled.connect($Bridge.set_extended)
+#	$trigger.toggled.connect($Platform.set_active)
 	player.frame_ready.connect(enemy.mirror_frame)
 	player.attacked.connect(_on_player_attacked)
 	player.jumped.connect($Sfx/Jump.play)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://brhron7cbkuhm"]
+
+[ext_resource type="Texture2D" uid="uid://i2uqgt3ic45n" path="res://Assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/wood_slab_middle.png" id="1_0sn3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4t0r"]
+size = Vector2(16, 6)
+
+[node name="plat" type="StaticBody2D" unique_id=2034470520]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1648378441]
+texture = ExtResource("1_0sn3b")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 6.515643)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589181835]
+shape = SubResource("RectangleShape2D_c4t0r")
